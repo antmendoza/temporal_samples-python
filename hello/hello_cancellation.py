@@ -39,6 +39,9 @@ class CancellationWorkflow:
                 start_to_close_timeout=timedelta(seconds=1000),
                 # Always set a heartbeat timeout for long-running activities
                 heartbeat_timeout=timedelta(seconds=2),
+                # Wait for activity cancellation to complete
+                cancellation_type=workflow.ActivityCancellationType.WAIT_CANCELLATION_COMPLETED,
+
             )
         finally:
             await workflow.execute_activity(
